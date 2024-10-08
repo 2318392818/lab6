@@ -1,7 +1,8 @@
 import http from 'http'
 const server = http.createServer(
     (req,res) =>{
-        res.end("Hello World");
+        res.writeHead(500,{'Content-Type':'application/json'})
+        res.end(JSON.stringify({message:"服务器错误"}))
     }
 );
 server.listen(8000,()=>{
