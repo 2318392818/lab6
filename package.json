@@ -1,11 +1,10 @@
 {
   "name": "lab6",
   "version": "1.0.0",
-  "description": "",
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server2.js"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +14,10 @@
   },
   "dependencies": {
     "dotenv": "^16.4.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/song-yaxuan-is-super-dry/assignment-2.git"
+  },
+  "description": ""
 }
