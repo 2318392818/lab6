@@ -7,8 +7,13 @@ const users = [
 { id: 2, name: '李四' },
 { id: 3, name: '王五' }
 ];
+const logger = (req, res, next) => {
+        console.log(`${req.method} ${req.url}`);
+        next(); // 调⽤下⼀个中间件
+        };
 // 创建HTTP服务器实例
 const server = createServer((req, res) => {
+        logger(req,res,()=>{
     if(req.url === '/api/users' && req.method === 'GET') {
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
          res.write(JSON.stringify(users));
@@ -29,6 +34,7 @@ const server = createServer((req, res) => {
     res.end();
     }
    });
+});
 // 服务器监听端⼝号，且启动成功后输出提⽰信息
 server.listen(PORT, () => {
 console.log(`服务器已启动,监听端口${PORT}`);
