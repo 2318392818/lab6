@@ -60,6 +60,43 @@ const server = createServer((req, res) => {
         }));
         res.end();
         };
+        // 路由处理 POST /api/users
+const createUserHandler = (req, res) => {
+        let body = '';
+        // 监听'data'事件，逐块接收请求体的数据
+        req.on('data', (chunk) => {
+        body += chunk.toString();
+        });
+        // 数据接收完毕后，触发'end'事件
+        req.on('end', () => {
+        const user = JSON.parse(body); // 解析请求体中
+        的JSON数据
+        users.push(user); // 将解析出的⽤户添加到⽤户列表
+        中
+        res.statusCode = 201; // 设置响应状态码为201，表⽰创建成功
+        res.write(JSON.stringify(user)); // 返回创建的⽤户数据
+        res.end();
+        });
+        };
+        const server = createServer((req,res)=>{
+                logger(req,res,()=>{
+                        jsonMiddleware(req,res,()=>{
+                                if(req,res === '/api/users' && req.method ==='GET'){
+                                        getUsersHandler(req,res);
+                                }else if(req.url.startsWith('/api/users/')&&req.method ==='GET'){
+                                        getUserHandler(req,res);
+                                }else if(req/url === '/api/users'&&req.method ==='POST')
+                                {
+                                        createUserHandler(req,res);
+                                }else{
+                                        notFoundHandler(req,res)
+                                }
+                                                      
+
+                        })
+                })
+        })
+
    });
 });
 // 服务器监听端⼝号，且启动成功后输出提⽰信息
