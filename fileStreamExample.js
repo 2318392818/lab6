@@ -1,5 +1,4 @@
-const fs = require('fs');
-
+import fs from 'fs'
 // 创建一个可读流，从第8个字节开始读取到第22个字节结束，每次读取3个字节
 const readStream = fs.createReadStream('./aaa.txt', 
     {
@@ -24,5 +23,5 @@ readStream.on('data', (data) => {
 
 // 当流结束时触发
 readStream.on('end', () => {
-    console.log('Stream ended.');
+    console.log('文件流结束');
 });
